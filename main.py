@@ -20,7 +20,7 @@ def ToCSV():
         newLines = []
         linesLength = 0
         for line in lines:
-            splitLines = (str(line).replace("\n", "").replace('"', '|||').replace("    ", "\t")).split("\t")
+            splitLines = (str(line).replace("\n", "").replace('"', '""').replace("    ", "\t")).split("\t")
             if len(splitLines) > linesLength:
                 linesLength = len(splitLines)
             newLine = ""
@@ -63,7 +63,7 @@ def FromCSV():
             newFileName = inputFile.replace(".csv", ".py")
             with open(newFileName, "a", encoding="utf-8") as file2:
                 for finalLine in lines:
-                    finalLine = finalLine.replace('|||', '"')
+                    finalLine = finalLine.replace('""', '"')
                     if finalLine == '':
                         finalLine = "\t"
                     file2.write(f"{finalLine}")
